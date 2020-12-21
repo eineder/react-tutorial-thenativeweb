@@ -5,14 +5,11 @@ export class RegisterForm extends React.PureComponent {
     constructor(props) {
         super(props);
         this.handleChange = this.handleChange.bind(this);
-        this.handleTShirtSizeChange = this.handleTShirtSizeChange.bind(this);
-        this.handleLunchChange = this.handleLunchChange.bind(this);
         this.state = {
             name: '',
             tShirtSize: 'm-l',
             lunch: true
         };
-
     }
 
     render() {
@@ -20,6 +17,7 @@ export class RegisterForm extends React.PureComponent {
             <div>
                 <label>Name:
                 <input type="text"
+                        name="name"
                         value={this.state.name}
                         onChange={this.handleChange}
                     />
@@ -27,7 +25,8 @@ export class RegisterForm extends React.PureComponent {
                 <br />
                 <label>Size:
                     <select value={this.state.tShirtSize}
-                        onChange={this.handleTShirtSizeChange}>
+                        name="tShirtSize"
+                        onChange={this.handleChange}>
                         <option value="w-s">W-S</option>
                         <option value="w-m">W-M</option>
                         <option value="w-l">W-L</option>
@@ -40,8 +39,9 @@ export class RegisterForm extends React.PureComponent {
 
                 <label>Lunch:
                     <input type="checkbox"
+                        name="lunch"
                         checked={this.state.lunch}
-                        onChange={this.handleLunchChange}
+                        onChange={this.handleChange}
                     />
                 </label>
             </div>
@@ -49,22 +49,11 @@ export class RegisterForm extends React.PureComponent {
     }
 
     handleChange(event) {
-        console.log(event.target.value);
+        console.log(event.target.name);
 
         this.setState({
-            name: event.target.value
+            [event.target.name]: event.target.type === 'checkbox' ? event.target.checked : event.target.value
         });
     }
 
-    handleTShirtSizeChange(event) {
-        this.setState({
-            tShirtSize: event.target.value
-        });
-    }
-
-    handleLunchChange(event) {
-        this.setState({
-            lunch: event.target.checked
-        });
-    }
 }
