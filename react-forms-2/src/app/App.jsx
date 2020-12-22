@@ -1,6 +1,7 @@
 import React from 'react';
 import { RegisterForm } from './RegisterForm';
 import { AttendeeList } from './AttendeeList';
+import { Tab } from './Tab';
 
 
 const mockAttendees = [
@@ -24,7 +25,7 @@ const mockAttendees = [
 export class App extends React.Component {
 
     constructor(props) {
-        
+
         super(props);
         this.state = {
             attendees: mockAttendees
@@ -48,10 +49,8 @@ export class App extends React.Component {
     render() {
         return (
             <div>
-                <h1>Anmeldung zum React-Workshop:</h1>
-                <RegisterForm onSubmit={this.handleSubmit} />
-                <h2>Teilnehmendenliste</h2>
-                <AttendeeList attendees={this.state.attendees} />
+                <Tab headline="Registrierung"><RegisterForm onSubmit={this.handleSubmit} /></Tab>
+                <Tab headline="Teilnehmendenliste" ><AttendeeList attendees={this.state.attendees} /></Tab>
             </div>
         );
     }
