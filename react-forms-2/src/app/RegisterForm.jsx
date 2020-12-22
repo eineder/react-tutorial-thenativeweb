@@ -53,6 +53,16 @@ export class RegisterForm extends React.PureComponent {
     }
 
     handleSubmit() {
-        this.setState((state) => { return { formSubmitted: true }; });
+        const {name, tShirtSize, lunch} = this.state;
+        
+        this.props.onSubmit({
+            name: name,
+            tShirtSize: tShirtSize,
+            lunch: lunch
+        });
+
+        this.setState( { 
+            formSubmitted: true 
+        });
     }
 }
