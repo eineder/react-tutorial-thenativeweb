@@ -4,10 +4,10 @@ export class Tab extends React.Component{
 
     render(){
         return(
-            <div>
+            <React.Fragment>
                 <h1>{this.props.headline}</h1>
                 <article>{this.props.children}</article>
-            </div>
+            </React.Fragment>
         );
     }   
 

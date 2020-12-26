@@ -2,7 +2,7 @@ import React from 'react';
 import { RegisterForm } from './RegisterForm';
 import { AttendeeList } from './AttendeeList';
 import { Tab } from './Tab';
-
+import { TabController } from './TabController';
 
 const mockAttendees = [
     {
@@ -48,10 +48,10 @@ export class App extends React.Component {
 
     render() {
         return (
-            <div>
+            <TabController>
                 <Tab headline="Registrierung"><RegisterForm onSubmit={this.handleSubmit} /></Tab>
                 <Tab headline="Teilnehmendenliste" ><AttendeeList attendees={this.state.attendees} /></Tab>
-            </div>
+            </TabController>
         );
     }
 }
