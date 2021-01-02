@@ -1,4 +1,5 @@
 import React from 'react';
+import { NumericInput } from '../components/NumericInput';
 import './RecipeForm.css';
 
 export class IngredientFormPart extends React.Component {
@@ -25,7 +26,7 @@ export class IngredientFormPart extends React.Component {
         </label>
         <label>
           Menge:{' '}
-          <input
+          <NumericInput
             type="number"
             value={this.props.ingredient.amount}
             name="amount"
