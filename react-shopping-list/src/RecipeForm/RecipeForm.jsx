@@ -20,6 +20,19 @@ export class RecipeForm extends React.Component {
     this.state = emptyRecipe;
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleAddIngredientClick = this.handleAddIngredientClick.bind(this);
+    this.handleSaveClick = this.handleSaveClick.bind(this);
+  }
+
+  handleSaveClick() {
+    const finishedIngredients = this.state.ingredients.map((item) => ({
+      ...item,
+      amount: Number.parseFloat(item.amount),
+    }));
+
+    this.props.onSave({
+      name: this.state.name,
+      ingredients: finishedIngredients,
+    });
   }
 
   handleNameChange(event) {
@@ -73,7 +86,9 @@ export class RecipeForm extends React.Component {
             Zutat hinzufügen
           </button>
         </article>
-        <button type="button">Speichern</button>
+        <button type="button" onClick={this.handleSaveClick}>
+          Speichern
+        </button>
       </form>
     );
   }
